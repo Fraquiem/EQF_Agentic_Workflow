@@ -99,6 +99,7 @@ Ante estos resultados encontrados, se comenzó a identificar el patrón de que u
 ```text
 .
 ├── README.md
+├── config.yml
 └── agents/
     ├── architect.md
     ├── docs.md
@@ -111,4 +112,6 @@ Ante estos resultados encontrados, se comenzó a identificar el patrón de que u
     └── quick.md
 ```
 
+
+`config.yml` es una copia de la configuración OMP observada en este equipo; registra preferencias de modelos, proveedores y comportamiento, no credenciales. Revísala y adáptala antes de usarla en otro entorno.
 
