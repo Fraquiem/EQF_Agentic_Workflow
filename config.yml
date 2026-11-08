@@ -1,35 +1,34 @@
 setupVersion: 2
 defaultThinkingLevel: medium
 modelRoles:
-  smol: freellmapi/auto:fast
-  free_fast: freellmapi/auto:fast
-  free_worker: freellmapi/auto:coding
-  task: openai-codex/gpt-6.1-sol:medium
+  smol: openai-codex/gpt-6-luna:low
+  task: openai-codex/gpt-6.1-terra:medium
   review: openai-codex/gpt-6.1-sol:high
-  scout: openai-codex/gpt-6-luna:low
+  reviewer: openai-codex/gpt-6.1-terra:medium
+  scout: openai-codex/gpt-6.1-terra:medium
   orchestrator: openai-codex/gpt-6.1-sol:medium
-  slow: openai-codex/gpt-6-astra:high
-  plan: openai-codex/gpt-6-astra:high
-  expert: openai-codex/gpt-6-astra:high
+  slow: openai-codex/gpt-6.1-sol:high
+  plan: openai-codex/gpt-6.1-sol:high
+  expert: openai-codex/gpt-6.1-sol:high
   omarchy: openai-codex/gpt-6.1-sol:high
-  advisor: openai-codex/gpt-6-luna:medium
-  docs: openai-codex/gpt-6-luna:medium
-  default: openai-codex/gpt-6-luna:medium
+  advisor: openai-codex/gpt-6.1-terra:medium
+  docs: openai-codex/gpt-6.1-terra:low
+  default: openai-codex/gpt-6.1-terra:medium
 task:
   agentModelOverrides:
     task: "@task"
     scout: "@scout"
-    reviewer: "@review"
+    reviewer: "@reviewer"
     security-reviewer: "@review"
   agentAdvisor: {}
+  disabledAgents: []
 advisor:
   enabled: false
-retry:
-  fallbackChains:
-    free_fast: []
-    free_worker: []
-    freellmapi/*: []
 hideThinkingBlock: true
-extendedContext: true
+extendedContext: false
 disabledProviders:
   - amazon-bedrock
+  - google-antigravity
+  - opencode-zen
+codexResets:
+  autoRedeem: "no"
