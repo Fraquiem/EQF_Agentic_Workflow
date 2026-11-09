@@ -54,19 +54,19 @@ El perfil `omarchy` especializa el workflow en la configuración del sistema ins
 | Agente | Uso y límites | Modelo actual configurado |
 | --- | --- | --- |
 | [`orchestrator`](agents/orchestrator.md) | Clasifica complejidad y riesgo, selecciona agentes con una tabla explícita, define contratos, integra y valida resultados y exige revisión independiente. | `openai-codex/gpt-6.1-sol:medium` (`@orchestrator`) |
-| [`architect`](agents/architect.md) | Análisis de arquitectura, invariantes, concurrencia, depuración difícil y riesgos; solo lectura. Únicamente puede delegar investigación a `scout`. | `openai-codex/gpt-6.1-sol:high` (`@slow`) |
-| [`docs`](agents/docs.md) | Documentación e instrucciones basadas en fuentes; no inventa decisiones ni comportamiento. Puede delegar investigación de solo lectura a `scout`. | `openai-codex/gpt-6.1-terra:low` (`@docs`) |
-| [`expert`](agents/expert.md) | Implementación compleja, refactorizaciones profundas, depuración difícil y migraciones delimitadas. Habilitado en los `spawns` del orquestador; no delega por cuenta propia. | `openai-codex/gpt-6.1-sol:high` (`@expert`) |
+| [`architect`](agents/architect.md) | Análisis de arquitectura, invariantes, concurrencia, depuración difícil y riesgos; solo lectura. Únicamente puede delegar investigación a `scout`. | `anthropic/claude-opus-5-5` (`@slow`) |
+| [`docs`](agents/docs.md) | Documentación e instrucciones basadas en fuentes; no inventa decisiones ni comportamiento. Puede delegar investigación de solo lectura a `scout`. | `openai-codex/gpt-6.1-terra:medium` (`@docs`) |
+| [`expert`](agents/expert.md) | Implementación compleja, refactorizaciones profundas, depuración difícil y migraciones delimitadas. Habilitado en los `spawns` del orquestador; no delega por cuenta propia. | `anthropic/claude-opus-5-5` (`@expert`) |
 | [`quick`](agents/quick.md) | Búsquedas, diagnósticos inocuos y trabajo mecánico especificado: boilerplate, ediciones repetitivas, refactorizaciones, pruebas simples y documentación. No decide diseño ni delega; conserva restricciones explícitas y controles adicionales del hook. | `openai-codex/gpt-6-luna:low` (selector directo) |
-| [`omarchy`](agents/omarchy.md) | Perfil separado para diagnóstico y configuración segura de Omarchy. Conserva autoridad sobre cambios del sistema y delega a `quick` solo diagnósticos no mutantes. | `openai-codex/gpt-6.1-sol:high` (`@omarchy`) |
+| [`omarchy`](agents/omarchy.md) | Perfil separado para diagnóstico y configuración segura de Omarchy. Conserva autoridad sobre cambios del sistema y delega a `quick` solo diagnósticos no mutantes. | `anthropic/claude-opus-5-5` (`@omarchy`) |
 | [`omarchy-scout`](agents/omarchy-scout.md) | Investigación Omarchy de solo lectura sobre configuración, defaults, comandos y documentación. | `openai-codex/gpt-6.1-terra:medium` (`@scout`) |
-| [`omarchy-reviewer`](agents/omarchy-reviewer.md) | Revisión Omarchy de solo lectura para corrección, seguridad y regresiones. Conserva el nivel alto de revisión. | `openai-codex/gpt-6.1-sol:high` (`@review`) |
+| [`omarchy-reviewer`](agents/omarchy-reviewer.md) | Revisión Omarchy de solo lectura para corrección, seguridad y regresiones. Comparte el rol de revisión sensible. | `anthropic/claude-opus-5-5` (`@review`) |
 | `scout` | Explora repositorios y devuelve hallazgos con rutas y evidencia, en modo de solo lectura. | `openai-codex/gpt-6.1-terra:medium` (`@scout`) |
 | `task` | Implementación acotada según el contrato y los límites definidos por el padre. | `openai-codex/gpt-6.1-terra:medium` (`@task`) |
-| `reviewer` | Revisión independiente de corrección y calidad; tiene un rol propio para no modificar el nivel de las revisiones sensibles. | `openai-codex/gpt-6.1-terra:medium` (`@reviewer`) |
-| `security-reviewer` | Revisión de vulnerabilidades, límites de confianza y cambios sensibles para la seguridad. Conserva el nivel alto de revisión. | `openai-codex/gpt-6.1-sol:high` (`@review`) |
+| `reviewer` | Revisión independiente de corrección y calidad; tiene un rol propio para no modificar las revisiones sensibles. | `anthropic/claude-sonnet-5-5` (`@reviewer`) |
+| `security-reviewer` | Revisión de vulnerabilidades, límites de confianza y cambios sensibles para la seguridad. | `anthropic/claude-opus-5-5` (`@review`) |
 
-Los modelos corresponden a la configuración local observada, no a los modelos del benchmark resumido abajo. Los identificadores y asignaciones pueden cambiar en OMP.
+Los modelos corresponden a esta rama de configuración, no a los modelos del benchmark resumido abajo. Los identificadores y asignaciones pueden cambiar en OMP. Los modelos Claude no fijan un nivel de razonamiento en el selector; se aplica el nivel predeterminado de la configuración.
 
 ## Benchmark para elegir el modelo orquestador (03/09/2026)
 
